@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Border from '../Border/'
+import Board from '../Board/'
 import Stats from '../Stats/'
 import StartButton from '../StartButton/'
 import {createBorder} from '../../Config'
@@ -17,15 +17,15 @@ const Tetris = () => {
     return(
         <StyledTetrisWrapper>
             <StyledTetris>
-                <Border border={createBorder()}/>
-                <aside>
-                    <div>
-                    <Stats text="Score"/>
-                    <Stats text="Rows"/>
-                    <Stats text="Levels"/>
-                    </div>
-                    <StartButton/>
-                </aside>
+            <Board board={createBorder()}/>
+            <aside>
+                <div>
+                <Stats text="Score"/>
+                <Stats text="Rows"/>
+                <Stats text="Levels"/>
+                </div>
+                <StartButton/>
+            </aside>
             </StyledTetris>
         </StyledTetrisWrapper>
     )
