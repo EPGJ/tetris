@@ -1,19 +1,18 @@
 import React from 'react'
 
-import Border from '../Border/'
+import Border from '../Border'
 import Stats from '../Stats/'
 import StartButton from '../StartButton/'
-import {createBorder} from '../../Config'
-
-
+import {createBorder} from '../../Utils/createBorder'
 import { StyledTetrisWrapper, StyledTetris } from './styles'
 
 
+import { usePlayer } from '../../hooks/usePlayer';
+import { useBoard } from '../../hooks/useBoard';
+
+
+
 const Tetris = () => {
-    
-    
-    
-    
     return(
         <StyledTetrisWrapper>
             <StyledTetris>
