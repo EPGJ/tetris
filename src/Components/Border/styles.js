@@ -9,4 +9,5 @@ export const StyledBoard = styled.div`
     width: 100%;
     max-width: 25vw;
     background: #111;
+    
 `
