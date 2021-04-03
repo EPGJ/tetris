@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-import Board from '../Board/'
+import Board from '../Board'
 import Stats from '../Stats/'
 import StartButton from '../StartButton/'
 import {createBoard} from '../../Utils/createBoard'
