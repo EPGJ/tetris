@@ -8,6 +8,8 @@ import { StyledTetrisWrapper, StyledTetris } from './styles'
 
 import { usePlayer } from '../../hooks/usePlayer';
 import { useBoard } from '../../hooks/useBoard';
+import { StyleSheetManager } from 'styled-components'
+
 
 
 
@@ -15,15 +17,56 @@ const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
     
-    const [player] = usePlayer()
+    const [player, updatePlayerPosition, resetPlayer] = usePlayer()
     const [board, setBoard] = useBoard(player)
 
+    const startGame = () => {
+        setBoard(createBoard())
+        resetPlayer()
+    }
+    const movePieceHorizontal = direction =>{
+        updatePlayerPosition({x: direction, y: 0})
+    }
+    const drop = () =>{
+        updatePlayerPosition({ x: 0, y: 1, collided: false })
+    }
+    const dropPiece = () =>{
+        drop()
+    }
+    const movePiece = ({keyCode}) =>{
+        
+        if(!gameOver){
+            //Seta da esquerda
+            if(keyCode === 37){
+                movePieceHorizontal(-1)
+            }
+            else{
+                //Seta da direita
+                if(keyCode ===39){
+                    movePieceHorizontal(1)
+                }
+                else{
+                    //Seta para baixo
+                    if(keyCode ===40){
+                        dropPiece(1)
+                    }
+
+                }
 
 
 
+            } 
+            
+
+
+        }
+
+
+    } 
 
     return(
-        <StyledTetrisWrapper>
+        // StyledTetrisWrapper eh para conseguir capturar o keyDown em qualquer lugar da tela
+        <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={ (e) => movePiece(e)}  >
             <StyledTetris>
                 <Board board={board}/>
                 <aside>
@@ -41,7 +84,7 @@ const Tetris = () => {
                         )
                     }
                     
-                    <StartButton/>
+                    <StartButton callback={startGame} />
                 </aside>
             </StyledTetris>
         </StyledTetrisWrapper>
