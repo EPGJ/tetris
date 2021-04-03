@@ -25,24 +25,24 @@ const Tetris = () => {
     return(
         <StyledTetrisWrapper>
             <StyledTetris>
-            <Board board={board}/>
-            <aside>
-                {
-                    gameOver? (
+                <Board board={board}/>
+                <aside>
+                    {
+                        gameOver? (
 
-                        <Stats gameOver={gameOver} text ="O Jogo acabou" />
+                            <Stats gameOver={gameOver} text ="O Jogo acabou" />
 
-                    ):(
-                        <div>
-                            <Stats text="Score"/>
-                            <Stats text="Rows"/>
-                            <Stats text="Levels"/>
-                        </div>
-                    )
-                }
-                
-                <StartButton/>
-            </aside>
+                        ):(
+                            <div>
+                                <Stats text="Score"/>
+                                <Stats text="Rows"/>
+                                <Stats text="Levels"/>
+                            </div>
+                        )
+                    }
+                    
+                    <StartButton/>
+                </aside>
             </StyledTetris>
         </StyledTetrisWrapper>
     )

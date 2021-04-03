@@ -5,7 +5,7 @@ import {Pieces} from '../../Pieces'
 
 
 const Cell = ({type}) => (
-    <StyledCell type={'J'} color={Pieces['J'].color}>cell</StyledCell>
+    <StyledCell type={type} color={Pieces[type].color}></StyledCell>
 )
 
 export default Cell

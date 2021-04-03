@@ -4,7 +4,7 @@ import Cell from '../Cell'
 import {StyledBoard} from './styles'
 
 const Board = ({board}) => (
-    <StyledBoard width={board[0].lenght} height={board.lenght}>
+    <StyledBoard>
         {board.map(row => row.map((cell, x) => 
         <Cell key={x} type={cell[0]}/>))
         }
