@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { createBorder } from '../Utils/createBorder';
+import { createBoard } from '../Utils/createBoard';
 
-export const useStage = () => {
+export const useBoard = () => {
 
-  const [stage, setStage] = useState(createBorder());
-  return [stage, setStage];
+  const [board, setBoard] = useState(createBoard());
+  return [board, setBoard];
 
 }
