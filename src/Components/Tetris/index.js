@@ -6,21 +6,23 @@ import StartButton from '../StartButton/'
 import {createBoard} from '../../Utils/createBoard'
 import {checkCollision} from "../../Utils/checkColision"
 import { StyledTetrisWrapper, StyledTetris } from './styles'
-
 import { usePlayer } from '../../hooks/usePlayer';
 import { useBoard } from '../../hooks/useBoard';
+import {useInterval} from "../../hooks/useInterval"
+
 // import { StyleSheetManager } from 'styled-components'
 
 const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
-    const [player, updatePlayerPosition, resetPlayer] = usePlayer()
+    const [player, updatePlayerPosition, resetPlayer, playerRotate] = usePlayer()
     const [board, setBoard] = useBoard(player,resetPlayer)
 
     const startGame = () => {
         setBoard(createBoard())
         resetPlayer()
         setGameOver(false);
+        setDropTime(1000);
     }
     const movePieceHorizontal = direction =>{
         if(!checkCollision(player, board, {x: direction, y:0})){
@@ -40,33 +42,51 @@ const Tetris = () => {
         }
     }
     const dropPiece = () =>{
+        setDropTime(null);
         drop()
     }
+    const keyUp = ({ keyCode }) => {
+        if (!gameOver) {
+          if (keyCode === 40) {
+            setDropTime(1000);
+          }
+        }
+      };
     const movePiece = ({keyCode}) =>{
         
         if(!gameOver){
-            //Seta da esquerda
-            if(keyCode === 37){
-                movePieceHorizontal(-1)
-            }
-            else{
+
+            switch(keyCode){
+                //Seta da esquerda
+                case 37:
+                    movePieceHorizontal(-1)
+                    break;
                 //Seta da direita
-                if(keyCode ===39){
+                case 39:
                     movePieceHorizontal(1)
-                }
-                else{
-                    //Seta para baixo
-                    if(keyCode ===40){
-                        dropPiece(1)
-                    }
-                }
-            } 
+                    break;
+                //Seta para baixo
+                case 40:
+                dropPiece(1)
+                    break;
+                //Seta para cima
+                case 38:
+                    playerRotate(board, -1);
+                    break;
+                //Espaco
+                case 32:
+                    playerRotate(board, 1);
+                    break;
+            }
         }
     } 
+    useInterval(() => {
+        drop();
+      }, dropTime);
 
     return(
         // StyledTetrisWrapper eh para conseguir capturar o keyDown em qualquer lugar da tela
-        <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={ (e) => movePiece(e)}  >
+        <StyledTetrisWrapper role="button" tabIndex="0" onKeyUp={keyUp} onKeyDown={ (e) => movePiece(e)}  >
             <StyledTetris>
                 <Board board={board}/>
                 <aside>

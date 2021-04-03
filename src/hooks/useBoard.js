@@ -4,8 +4,27 @@ import { createBoard } from '../Utils/createBoard';
 export const useBoard = (player, resetPlayer) => {
 
   const [board, setBoard] = useState(createBoard());
-  
+  const [rowsCleared, setRowsCleared] = useState(0)
+
   useEffect (()=>{
+
+    setRowsCleared(0)
+
+    const checkRow = newBoard =>
+      newBoard.reduce((acumulator, row) => {
+        if(row.findIndex(cell=> cell[0] === 0) === -1){
+          setRowsCleared(prev=> prev+1)
+          acumulator.unshift(new Array(newBoard[0].length). fill([0, "clear"]));
+          return acumulator
+        }
+        acumulator.push(row);
+        return acumulator;
+      },[])
+
+
+
+
+
     const updateBoard = prevBoard => {
       //Carrega a area do jogo
       const newBoard = prevBoard.map(row =>
@@ -26,6 +45,8 @@ export const useBoard = (player, resetPlayer) => {
 
       if(player.collided){
         resetPlayer();
+        return checkRow(newBoard)
+        
       }
 
       return newBoard;

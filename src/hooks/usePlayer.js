@@ -55,5 +55,5 @@ export const usePlayer = () => {
     setPlayer(clonedPlayer);
   };
 
-  return [player, updatePlayerPosition, resetPlayer];
+  return [player, updatePlayerPosition, resetPlayer, playerRotate];
 };
