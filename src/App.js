@@ -3,8 +3,8 @@ import Tetris from './Components/Tetris/'
 
 
 const App = () => (
-  <div className = 'App'> 
-    <Tetris></Tetris>
+  <div > 
+    <Tetris/>
   </div>
 )
 

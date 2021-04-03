@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, {useState} from 'react'
 
 import Board from '../Board'
 import Stats from '../Stats/'
@@ -8,15 +8,11 @@ import { StyledTetrisWrapper, StyledTetris } from './styles'
 
 import { usePlayer } from '../../hooks/usePlayer';
 import { useBoard } from '../../hooks/useBoard';
-import { StyleSheetManager } from 'styled-components'
-
-
-
+// import { StyleSheetManager } from 'styled-components'
 
 const Tetris = () => {
-    const [dropTime, setDropTime] = useState(null);
+    // const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
-    
     const [player, updatePlayerPosition, resetPlayer] = usePlayer()
     const [board, setBoard] = useBoard(player)
 
@@ -50,18 +46,9 @@ const Tetris = () => {
                     if(keyCode ===40){
                         dropPiece(1)
                     }
-
                 }
-
-
-
             } 
-            
-
-
         }
-
-
     } 
 
     return(
@@ -78,8 +65,8 @@ const Tetris = () => {
                         ):(
                             <div>
                                 <Stats text="Score"/>
-                                <Stats text="Rows"/>
-                                <Stats text="Levels"/>
+                                {/* <Stats text="Rows"/> */}
+                                {/* <Stats text="Levels"/> */}
                             </div>
                         )
                     }
