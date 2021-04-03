@@ -54,6 +54,6 @@ export const useBoard = (player, resetPlayer) => {
     setBoard(prev=> updateBoard(prev));
   }, [player, resetPlayer]
   )
-  return [board, setBoard];
+  return [board, setBoard, rowsCleared];
 
 }

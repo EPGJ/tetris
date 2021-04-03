@@ -9,6 +9,7 @@ import { StyledTetrisWrapper, StyledTetris } from './styles'
 import { usePlayer } from '../../hooks/usePlayer';
 import { useBoard } from '../../hooks/useBoard';
 import {useInterval} from "../../hooks/useInterval"
+import {useGame} from "../../hooks/useGame"
 
 // import { StyleSheetManager } from 'styled-components'
 
@@ -16,13 +17,18 @@ const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
     const [player, updatePlayerPosition, resetPlayer, playerRotate] = usePlayer()
-    const [board, setBoard] = useBoard(player,resetPlayer)
+    const [board, setBoard, rowsCleared] = useBoard(player, resetPlayer);
+    const [score, setScore, rows, setRows, level, setLevel] = useGame(rowsCleared);
+
 
     const startGame = () => {
         setBoard(createBoard())
         resetPlayer()
         setGameOver(false);
         setDropTime(1000);
+        setScore(0)
+        setRows(0)
+        setLevel(0)
     }
     const movePieceHorizontal = direction =>{
         if(!checkCollision(player, board, {x: direction, y:0})){
@@ -30,6 +36,14 @@ const Tetris = () => {
         }
     }
     const drop = () =>{
+        // aumenta o level quando 10 linhas sao limpas
+        if (rows > (level + 1) * 10) {
+            setLevel(prev => prev + 1);
+            setDropTime(1000 / (level + 1) + 200);
+          }
+        
+
+
         if(!checkCollision(player,board, {x:0, y:1})){
             updatePlayerPosition({x:0,y:1, collided:false})
         }
@@ -48,7 +62,7 @@ const Tetris = () => {
     const keyUp = ({ keyCode }) => {
         if (!gameOver) {
           if (keyCode === 40) {
-            setDropTime(1000);
+            setDropTime(1000 / (level +1) +200);
           }
         }
       };
@@ -97,9 +111,9 @@ const Tetris = () => {
 
                         ):(
                             <div>
-                                <Stats text="Score"/>
-                                {/* <Stats text="Rows"/> */}
-                                {/* <Stats text="Levels"/> */}
+                                <Stats text={`Score: ${score}`} />
+                                <Stats text={`rows: ${rows}`} />
+                                <Stats text={`Level: ${level}`} />
                             </div>
                         )
                     }
