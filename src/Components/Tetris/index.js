@@ -4,6 +4,7 @@ import Board from '../Board'
 import Stats from '../Stats/'
 import StartButton from '../StartButton/'
 import {createBoard} from '../../Utils/createBoard'
+import {checkCollision} from "../../Utils/checkColision"
 import { StyledTetrisWrapper, StyledTetris } from './styles'
 
 import { usePlayer } from '../../hooks/usePlayer';
@@ -11,20 +12,32 @@ import { useBoard } from '../../hooks/useBoard';
 // import { StyleSheetManager } from 'styled-components'
 
 const Tetris = () => {
-    // const [dropTime, setDropTime] = useState(null);
+    const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
     const [player, updatePlayerPosition, resetPlayer] = usePlayer()
-    const [board, setBoard] = useBoard(player)
+    const [board, setBoard] = useBoard(player,resetPlayer)
 
     const startGame = () => {
         setBoard(createBoard())
         resetPlayer()
+        setGameOver(false);
     }
     const movePieceHorizontal = direction =>{
-        updatePlayerPosition({x: direction, y: 0})
+        if(!checkCollision(player, board, {x: direction, y:0})){
+            updatePlayerPosition({x: direction, y: 0})
+        }
     }
     const drop = () =>{
-        updatePlayerPosition({ x: 0, y: 1, collided: false })
+        if(!checkCollision(player,board, {x:0, y:1})){
+            updatePlayerPosition({x:0,y:1, collided:false})
+        }
+        else{
+            if(player.position.y<1){
+                setGameOver(true)
+                setDropTime(null)
+            }
+            updatePlayerPosition({x:0,y:0,collided:true})
+        }
     }
     const dropPiece = () =>{
         drop()

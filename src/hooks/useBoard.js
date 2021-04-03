@@ -24,10 +24,14 @@ export const useBoard = (player, resetPlayer) => {
         })
       })
 
+      if(player.collided){
+        resetPlayer();
+      }
+
       return newBoard;
     }
     setBoard(prev=> updateBoard(prev));
-  }, [player]
+  }, [player, resetPlayer]
   )
   return [board, setBoard];
 
