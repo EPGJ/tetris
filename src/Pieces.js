@@ -6,7 +6,7 @@ export const Pieces = {
                [0, 1, 0],
                [1, 1, 0]
              ],
-      color: '36, 95, 223',       
+      color: '230, 127, 34',       
     },
     I: {
          shape: [
@@ -15,7 +15,7 @@ export const Pieces = {
                   [0, 2, 0, 0],
                   [0, 2, 0, 0]
                 ],
-         color: '80, 227, 230',       
+         color: '255, 234, 0',       
     },
     
     O: {
@@ -23,7 +23,7 @@ export const Pieces = {
                [3, 3],
                [3, 3],
              ],
-      color: '223, 217, 36',       
+      color: '250, 60, 0',       
     },
     L: {
       shape: [
@@ -31,7 +31,7 @@ export const Pieces = {
                [0, 4, 0],
                [0, 4, 4]
              ],
-      color: '223, 173, 36',       
+      color: '210, 46, 97',       
     },
     S: {
       shape: [
@@ -39,7 +39,7 @@ export const Pieces = {
                [5, 5, 0],
                [0, 0, 0]
              ],
-      color: '48, 211, 56',       
+      color: '171, 71, 187',       
     },
     Z: {
       shape: [
@@ -47,7 +47,7 @@ export const Pieces = {
                [0, 6, 6],
                [0, 0, 0]
              ],
-      color: '227, 78, 78',       
+      color: '17, 133, 234',       
     },
     T: {
       shape: [
@@ -55,7 +55,7 @@ export const Pieces = {
                [7, 7, 7],
                [0, 7, 0]
              ],
-      color: '132, 61, 198',       
+      color: '24, 177, 209',       
     },
   }
   
@@ -66,3 +66,4 @@ export const Pieces = {
     return Pieces[randPiece];
   }
   
+ 
