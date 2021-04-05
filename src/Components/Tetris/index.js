@@ -2,16 +2,14 @@ import React, {useState} from 'react'
 
 import Board from '../Board'
 import Stats from '../Stats/'
-import StartButton from '../StartButton/'
 import {createBoard} from '../../Utils/createBoard'
 import {checkCollision} from "../../Utils/checkColision"
-import { StyledTetrisWrapper, StyledTetris } from './styles'
+import { TetrisWrappeR, StartButtoN, TetriS } from './styles'
 import { usePlayer } from '../../hooks/usePlayer';
 import { useBoard } from '../../hooks/useBoard';
 import {useInterval} from "../../hooks/useInterval"
 import {useGame} from "../../hooks/useGame"
 
-// import { StyleSheetManager } from 'styled-components'
 
 const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
@@ -19,13 +17,13 @@ const Tetris = () => {
     const [player, updatePlayerPosition, resetPlayer, playerRotate] = usePlayer()
     const [board, setBoard, rowsCleared] = useBoard(player, resetPlayer);
     const [score, setScore, rows, setRows, level, setLevel] = useGame(rowsCleared);
-
+    const initialTime = 500
 
     const startGame = () => {
         setBoard(createBoard())
         resetPlayer()
         setGameOver(false);
-        setDropTime(1000);
+        setDropTime(initialTime);
         setScore(0)
         setRows(0)
         setLevel(0)
@@ -39,7 +37,7 @@ const Tetris = () => {
         // aumenta o level quando 10 linhas sao limpas
         if (rows > (level + 1) * 10) {
             setLevel(prev => prev + 1);
-            setDropTime(1000 / (level + 1) + 200);
+            setDropTime(initialTime / (level + 1) + 200);
           }
         
 
@@ -62,7 +60,7 @@ const Tetris = () => {
     const keyUp = ({ keyCode }) => {
         if (!gameOver) {
           if (keyCode === 40) {
-            setDropTime(1000 / (level +1) +200);
+            setDropTime(initialTime / (level +1) +200);
           }
         }
       };
@@ -99,9 +97,9 @@ const Tetris = () => {
       }, dropTime);
 
     return(
-        // StyledTetrisWrapper eh para conseguir capturar o keyDown em qualquer lugar da tela
-        <StyledTetrisWrapper role="button" tabIndex="0" onKeyUp={keyUp} onKeyDown={ (e) => movePiece(e)}  >
-            <StyledTetris>
+        // TetrisWrappeR eh para conseguir capturar o keyDown em qualquer lugar da tela
+        <TetrisWrappeR role="button" tabIndex="0" onKeyUp={keyUp} onKeyDown={ (e) => movePiece(e)}  >
+            <TetriS>
                 <Board board={board}/>
                 <aside>
                     {
@@ -112,16 +110,14 @@ const Tetris = () => {
                         ):(
                             <div>
                                 <Stats text={`Score: ${score}`} />
-                                <Stats text={`rows: ${rows}`} />
                                 <Stats text={`Level: ${level}`} />
                             </div>
                         )
                     }
-                    
-                    <StartButton callback={startGame} />
+                    <StartButtoN onClick={startGame}>Start</StartButtoN>
                 </aside>
-            </StyledTetris>
-        </StyledTetrisWrapper>
+            </TetriS>
+        </TetrisWrappeR>
     )
 }
 

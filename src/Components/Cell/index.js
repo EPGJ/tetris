@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {StyledCell} from './styles'
-import {Pieces} from '../../Pieces'
+import {Pieces} from '../../Utils/Pieces'
 
 
 const Cell = ({type}) =>{

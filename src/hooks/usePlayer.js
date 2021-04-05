@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-import { Pieces, generateRandomPiece } from "../Pieces";
+import { Pieces, generateRandomPiece } from "../Utils/Pieces";
 import { checkCollision } from "../Utils/checkColision";
 import { width } from "../Utils/createBoard";
 

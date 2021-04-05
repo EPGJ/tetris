@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import bgImgage from '../../Assets/bg.jpg'
 
-export const StyledTetrisWrapper = styled.div`
+export const TetrisWrappeR = styled.div`
     width: 100vw;
     height: 100vh;
     background: url(${bgImgage});
@@ -11,7 +11,7 @@ export const StyledTetrisWrapper = styled.div`
     overflow: hidden;
 `
 
-export const StyledTetris = styled.div`
+export const TetriS = styled.div`
     display: flex;
     align-items: flex-start;
     padding: 40px;
@@ -24,4 +24,19 @@ export const StyledTetris = styled.div`
         display: block;
         padding: 0 10px;
     }
+`
+export const StartButtoN = styled.button`
+    box-sizing: border-box;
+    // margin-top: 110px  ;
+    padding: 20px;
+    min-height: 30px;
+    width: 100%;
+    border-radius: 3px;
+    border: none;
+    font-weight: 600;
+    color: black;
+    background: #4682B4;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
 `
