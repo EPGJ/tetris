@@ -10,8 +10,7 @@ border: 2px solid #4682B4;
 min-height: 30px;
 width: 100%;
 border-radius: 3px;
-color: ${props => (props.gameOver ? 'red' : '#999')};
-background: #000;
-// font-family: Pixel, Arial, Helvetica, sans-serif;
+color: #EBE2E2 ;
+background: rgb(20,20,20);
 font-size:1rem;
 `

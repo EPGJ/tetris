@@ -86,9 +86,9 @@ const Tetris = () => {
                     playerRotate(board, -1);
                     break;
                 //Espaco
-                case 32:
-                    playerRotate(board, 1);
-                    break;
+                // case 32:
+                //     playerRotate(board, 1);
+                //     break;
             }
         }
     } 
@@ -98,7 +98,7 @@ const Tetris = () => {
 
     return(
         // TetrisWrappeR eh para conseguir capturar o keyDown em qualquer lugar da tela
-        <TetrisWrappeR role="button" tabIndex="0" onKeyUp={keyUp} onKeyDown={ (e) => movePiece(e)}  >
+        <TetrisWrappeR tabIndex="0" onKeyUp={keyUp} onKeyDown={ (e) => movePiece(e)}  >
             <TetriS>
                 <Board board={board}/>
                 <aside>

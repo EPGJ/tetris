@@ -1,4 +1,3 @@
-
 export const checkCollision = (player, board, { x: moveHorizontal, y: moveVertical }) => {
     for (let y = 0; y < player.piece.length; y += 1) {
       for (let x = 0; x < player.piece[y].length; x += 1) {

@@ -28,7 +28,7 @@ export const usePlayer = () => {
   }, []);
 
   const rotate = (piece, direction) => {
-    const rotatedPiece = piece.map((_, index) =>
+    const rotatedPiece = piece.map((aux, index) =>
       piece.map((column) => column[index])
     );
     if (direction > 0) {

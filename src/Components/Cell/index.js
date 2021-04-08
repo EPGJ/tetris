@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {StyledCell} from './styles'
+import {CelL} from './styles'
 import {Pieces} from '../../Utils/Pieces'
 
 
@@ -38,11 +38,9 @@ const Cell = ({type}) =>{
 
 
     return(
-        <StyledCell type={type} color={selectPieceColor} />
+        <CelL type={type} color={selectPieceColor} />
     )
 
 } 
 
 export default React.memo(Cell)
-
-//color={Pieces[type].color}

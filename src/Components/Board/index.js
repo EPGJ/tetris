@@ -1,19 +1,30 @@
 import React from 'react'
 import Cell from '../Cell'
 
-import {StyledBoard} from './styles'
+import {BoarD} from './styles'
 
 const Board = ({board}) =>{
 
-    console.log("Board: "+board[1])
+    const reRender = () => {
+
+
+
+
+        return(
+            board.map(row => 
+                row.map((cell, x) => <Cell key={x} type={cell[0]} />))  
+        )
+
+    }
+
+
 
     return(
-        <StyledBoard>
+        <BoarD>
         {
-            board.map(row => 
-                row.map((cell, x) => <Cell key={x} type={cell[0]} />))   
+             reRender()
         }
-    </StyledBoard>
+    </BoarD>
     )
 } 
 
