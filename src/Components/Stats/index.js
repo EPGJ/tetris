@@ -1,9 +1,9 @@
 import React from 'react'
 
-import {StyledStats} from './styles'
+import {StatS} from './styles'
 
 const Stats = ({gameOver, text}) => (
-    <StyledStats gameOver={gameOver}>{text}</StyledStats>
+    <StatS gameOver={gameOver}>{text}</StatS>
 )
 
 export default Stats

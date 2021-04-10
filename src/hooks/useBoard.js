@@ -31,7 +31,7 @@ export const useBoard = (player, resetPlayer) => {
         row.map(cell => (cell[1] ==='clear' ? [0, 'clear']: cell))  
       )
 
-      //Desenha  a peca
+      //Desenha  a peça
       player.piece.forEach((row,y)=> {
         row.forEach ((value,x)=> {
           if (value !==0){

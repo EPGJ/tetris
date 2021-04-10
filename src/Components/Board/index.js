@@ -9,7 +9,6 @@ const Board = ({board}) =>{
 
 
 
-
         return(
             board.map(row => 
                 row.map((cell, x) => <Cell key={x} type={cell[0]} />))  

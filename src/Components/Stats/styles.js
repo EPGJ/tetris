@@ -1,6 +1,6 @@
 import styled from  'styled-components'
 
-export const StyledStats = styled.div`
+export const StatS = styled.div`
 box-sizing: border-box;
 display: flex;
 align-items: center;

@@ -25,10 +25,10 @@ export const TetriS = styled.div`
         padding: 0 10px;
     }
 `
-export const StartButtoN = styled.button`
+export const StartButtoN = styled.div`
     box-sizing: border-box;
-    // margin-top: 110px  ;
     padding: 20px;
+    padding-left:40%;
     min-height: 30px;
     width: 100%;
     border-radius: 3px;

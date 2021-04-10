@@ -7,33 +7,34 @@ import {Pieces} from '../../Utils/Pieces'
 const Cell = ({type}) =>{
     
     const selectPieceColor = () =>{
-        let pieceType;
+        let pieceType,color;
         switch(type){
             case 1:
-                pieceType = 'J' 
+                color = "#E67F22"
                 break;
             case 2:
-                pieceType = 'I' 
+                color = "#FFEA00" 
                 break;
             case 3:
-                pieceType = 'O' 
+                color = "#FA3C00" 
                 break;
             case 4:
-                pieceType = 'L' 
+                color = "#D22E61" 
                 break;
             case 5:
-                pieceType = 'S' 
+                color = "#AB47BB" 
                 break;
             case 6:
-                pieceType = 'Z' 
+                color = "#1185EA" 
                 break;
             case 7:
-                pieceType = 'T' 
+                color = "#18B1D1" 
                 break;
             default:
-                pieceType = 0     
+                color = "#141414"
+
         }
-        return Pieces[pieceType].color
+        return color
     }
 
 
