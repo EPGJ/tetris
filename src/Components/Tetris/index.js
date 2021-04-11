@@ -2,6 +2,10 @@ import React, { useState } from "react";
 
 import Board from "../Board";
 import Stats from "../Stats/";
+import GameOver from "../GameOver/"
+
+import {width} from "../../Utils/createBoard"
+
 import { createBoard } from "../../Utils/createBoard";
 import { checkCollision } from "../../Utils/checkColision";
 import { TetrisWrappeR, StartButtoN, TetriS } from "./styles";
@@ -21,7 +25,6 @@ const Tetris = () => {
   const initialTime = 500;
 
   const startGame = ({ keyCode }) => {
-    console.log(keyCode);
     if (!keyCode !== 32) {
       setBoard(createBoard());
       resetPlayer();
@@ -47,7 +50,8 @@ const Tetris = () => {
     if (!checkCollision(player, board, { x: 0, y: 1 })) {
       updatePlayerPosition({ x: 0, y: 1, collided: false });
     } else {
-      if (player.position.y < 1) {
+      //se não houver espaço para renderizar a peça no centro superior, o jogo acaba
+      if (player.position.y < 1 ) {
         setGameOver(true);
         setDropTime(null);
       }
@@ -88,7 +92,10 @@ const Tetris = () => {
         case 38:
           playerRotate(board, -1);
           break;
+        //caso padrão: não faz nada
+        default: 
       }
+      
     }
   };
   useInterval(() => {
@@ -98,14 +105,13 @@ const Tetris = () => {
   return (
     // TetrisWrappeR é para conseguir capturar o keyDown em qualquer lugar da tela
     <TetrisWrappeR tabIndex="0" onKeyUp={keyUp} onKeyDown={(e) => movePiece(e)}>
-      <TetriS>
-        <Board board={board} />
+      <TetriS> 
+        <Board board={board} gameOver={gameOver} /> 
         <aside>
           <Stats text={`Score: ${score}`} />
           <Stats text={`Level: ${level}`} />
-          {gameOver && <Stats gameOver={gameOver} text="Game Over" />}
           <StartButtoN disabled={false} onClick={startGame}>
-            Start
+            {!gameOver? 'Start' : 'Try Again'}
           </StartButtoN>
         </aside>
       </TetriS>

@@ -3,26 +3,18 @@ import Cell from '../Cell'
 
 import {BoarD} from './styles'
 
-const Board = ({board}) =>{
+const Board = ({board, gameOver}) =>{
 
     const reRender = () => {
-
-
-
         return(
             board.map(row => 
-                row.map((cell, x) => <Cell key={x} type={cell[0]} />))  
+            row.map((cell, x) => <Cell key={x} type={cell[0]} />))  
         )
-
     }
 
-
-
     return(
-        <BoarD>
-        {
-             reRender()
-        }
+        <BoarD gameOver={gameOver}>
+        {!gameOver ? reRender() : 'Game Over' }
     </BoarD>
     )
 } 

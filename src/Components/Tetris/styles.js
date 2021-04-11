@@ -28,14 +28,13 @@ export const TetriS = styled.div`
 export const StartButtoN = styled.div`
     box-sizing: border-box;
     padding: 20px;
-    padding-left:40%;
+    text-align: center;
     min-height: 30px;
     width: 100%;
+    border: 2px solid #18B1D1;
     border-radius: 3px;
-    border: none;
-    font-weight: 600;
-    color: black;
-    background: #4682B4;
+    color: #EBE2E2;
+    font-family: GameFont;
     font-size: 1rem;
     outline: none;
     cursor: pointer;

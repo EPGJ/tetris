@@ -21,7 +21,7 @@ export const usePlayer = () => {
 
   const resetPlayer = useCallback(() => {
     setPlayer({
-      position: { x: width / 2 - 2, y: 0 },
+      position: { x: (width/2) - 2, y: 0 },
       piece: generateRandomPiece().shape,
       collided: false,
     });
