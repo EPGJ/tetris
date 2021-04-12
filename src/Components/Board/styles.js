@@ -15,5 +15,7 @@ export const BoarD = styled.div`
     font-family: GameFont;
     text-align: center;
     align-items: ${props => props.gameOver && 'center'};
-    background: black;
+    background: #0F0F0F;
+    opacity: 1;
+
 `

@@ -19,9 +19,8 @@ const Tetris = () => {
   const [gameOver, setGameOver] = useState(false);
   const [player, updatePlayerPosition, resetPlayer, playerRotate] = usePlayer();
   const [board, setBoard, rowsCleared] = useBoard(player, resetPlayer);
-  const [score, setScore, rows, setRows, level, setLevel] = useGame(
-    rowsCleared
-  );
+  const [textButton,setTextButton] = useState("Start");
+  const [score, setScore, rows, setRows, level, setLevel] = useGame(rowsCleared);
   const initialTime = 500;
 
   const startGame = ({ keyCode }) => {
@@ -33,6 +32,7 @@ const Tetris = () => {
       setScore(0);
       setRows(0);
       setLevel(0);
+      setTextButton("Reset");
     }
   };
   const movePieceHorizontal = (direction) => {
@@ -54,6 +54,7 @@ const Tetris = () => {
       if (player.position.y < 1 ) {
         setGameOver(true);
         setDropTime(null);
+        setTextButton("Try Again")
       }
       updatePlayerPosition({ x: 0, y: 0, collided: true });
     }
@@ -111,7 +112,7 @@ const Tetris = () => {
           <Stats text={`Score: ${score}`} />
           <Stats text={`Level: ${level}`} />
           <StartButtoN disabled={false} onClick={startGame}>
-            {!gameOver? 'Start' : 'Try Again'}
+            {textButton}
           </StartButtoN>
         </aside>
       </TetriS>

@@ -13,4 +13,6 @@ color: #EBE2E2 ;
 font-family: GameFont;
 font-size:1rem;
 text-align: center;
+background: #0A0A0A;
+opacity: 0.9;
 `

@@ -38,4 +38,6 @@ export const StartButtoN = styled.div`
     font-size: 1rem;
     outline: none;
     cursor: pointer;
+    background: #0A0A0A;
+    opacity: 0.9;
 `
