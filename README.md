@@ -2,7 +2,7 @@
 
 ## Instalando as dependências
 
-Para instalar todas as dependencias necessárias para execute o comando `yarn install` ou `npm install` a depender do seu gerenciador de pacotes JavaScript.a
+Para instalar todas as dependencias necessárias para execute o comando `yarn install` ou `npm install` a depender do seu gerenciador de pacotes JavaScript.
 
 ## Executando o jogo
 
