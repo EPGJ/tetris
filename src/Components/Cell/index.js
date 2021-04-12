@@ -1,7 +1,6 @@
 import React from "react";
 
 import { CelL} from "./styles";
-import { Pieces } from "../../Utils/Pieces";
 
 const Cell = ({ type }) => {
   const selectPieceColor = () => {
