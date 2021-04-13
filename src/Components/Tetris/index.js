@@ -17,6 +17,7 @@ import { useGame } from "../../hooks/useGame";
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+  const [theme, setTheme] = useState(false);
   const [player, updatePlayerPosition, resetPlayer, playerRotate] = usePlayer();
   const [board, setBoard, rowsCleared] = useBoard(player, resetPlayer);
   const [textButton,setTextButton] = useState("Start");
@@ -107,10 +108,14 @@ const Tetris = () => {
     // TetrisWrappeR é para conseguir capturar o keyDown em qualquer lugar da tela
     <TetrisWrappeR tabIndex="0" onKeyUp={keyUp} onKeyDown={(e) => movePiece(e)}>
       <TetriS> 
-        <Board board={board} gameOver={gameOver} /> 
+        <Board board={board} gameOver={gameOver}  theme={theme}/> 
         <aside>
           <Stats text={`Score: ${score}`} />
           <Stats text={`Level: ${level}`} />
+          <StartButtoN disabled={false} onClick={()=>setTheme(!theme)}>
+            Theme
+          </StartButtoN>
+          <br/>
           <StartButtoN disabled={false} onClick={startGame}>
             {textButton}
           </StartButtoN>

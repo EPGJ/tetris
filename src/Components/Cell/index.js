@@ -2,7 +2,7 @@ import React from "react";
 
 import { CelL} from "./styles";
 
-const Cell = ({ type }) => {
+const Cell = ({ type,theme }) => {
   const selectPieceColor = () => {
     let color;
     switch (type) {
@@ -34,7 +34,7 @@ const Cell = ({ type }) => {
   };
 
   return (
-        <CelL type={type} color={selectPieceColor} />
+        <CelL type={type} color={selectPieceColor} theme={theme}/>
   );
 };
 
