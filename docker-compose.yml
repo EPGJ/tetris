@@ -1,0 +1,10 @@
+version: "2.1"
+
+services:
+  frontend:
+    build: ./
+    container_name: tetris
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app
